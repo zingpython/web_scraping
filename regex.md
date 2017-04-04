@@ -33,14 +33,15 @@ Phone numbers:
 (000) 000.0000
 ```
 ```
+(000)0000000
+```
+```
 0000000
 ```
 ```
 0000000000
 ```
-```
-(000)0000000
-```
+
 
 This is the process of building a phone number scraping regex.
 
@@ -52,10 +53,17 @@ Now, we want to capture the matched phone number, so we add parenthesis around t
 ```
 reg = re.compile("(\d{3}\d{3}\d{4})")
 ```
-
+The area code, trunk, and extension might be separated by up to 3 characters that are not digits (such as the case when spaces are used along with the hyphen/dot delimiter):
+```
+reg = re.compile("(\d{3}\D{0,3}\d{3}\D{0,3}\d{4})")
+```
 Now, the phone number might actually start with a ( character (if the area code is enclosed in parentheses):
 ```
 reg = re.compile("(\(?\d{3}\D{0,3}\d{3}\D{0,3}\d{4}).*?")
+```
+Now that whole phone number is likely embedded in a bunch of other text:
+```
+reg = re.compile(".*?(\(?\d{3}\D{0,3}\d{3}\D{0,3}\d{4}).*?")
 ```
 
 
