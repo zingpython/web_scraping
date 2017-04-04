@@ -26,12 +26,7 @@ Phone numbers:
 
 (000)0000000
 ```
-```
-0000000
-```
-```
-0000000000
-```
+
 
 
 This is the process of building a phone number scraping regex.
